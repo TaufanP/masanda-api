@@ -1,4 +1,6 @@
 import Express = require("express");
+import moment = require("moment");
+
 import Products from "../../models/Product";
 import ResponseHelper from "../../helpers/ResponseHelper";
 import V from "../../helpers/Vocab";
@@ -10,7 +12,7 @@ const CreateProduct = async (
   next: Express.NextFunction
 ) => {
   const { barcode, product_name, price } = req["body"];
-
+  const barcodeAlt = moment(Date.now()).format("YYYYMMDDhhmss");
   try {
     const checkProduct = await Products.findOne({ barcode });
     if (checkProduct !== null) {
@@ -20,10 +22,10 @@ const CreateProduct = async (
       const imgUpload =
         req.file !== undefined
           ? await cloudinary.uploader.upload(req.file.path)
-          : null;
-      const imageUrl = req.file == undefined ? "" : imgUpload.secure_url;
+          : "";
+      const imageUrl = imgUpload == null ? "" : imgUpload.secure_url;
       const Added = new Products({
-        barcode,
+        barcode: barcode || barcodeAlt,
         product_name,
         price,
         product_image: imageUrl,

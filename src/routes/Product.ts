@@ -1,5 +1,10 @@
 import express = require("express");
-import { CreateProduct, Products, Product } from "../controllers/Product";
+import {
+  CreateProduct,
+  Products,
+  Product,
+  DeleteProduct,
+} from "../controllers/Product";
 import { AddProductValidation } from "../helpers/Validator";
 import upload = require("../config/multer");
 
@@ -13,6 +18,7 @@ router
     CreateProduct
   )
   .get("/", Products)
-  .get("/:barcode", Product);
+  .get("/:barcode", Product)
+  .post("/delete", DeleteProduct);
 
 export = router;

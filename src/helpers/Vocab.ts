@@ -11,6 +11,8 @@ const getProductsFail = "Gagal mendapatkan daftar produk.";
 const getProduct = "Berhasil mendapatkan detail produk.";
 const getProductFail = "Gagal mendapatkan detail produk.";
 const getProductEmpty = "Produk belum ditambahkan.";
+const delProduct = "Berhasil menghapus produk.";
+const delProductFail = "Gagal menghapus produk.";
 
 export default {
   addedProduct,
@@ -25,4 +27,6 @@ export default {
   getProduct,
   getProductFail,
   getProductEmpty,
+  delProduct,
+  delProductFail,
 };
