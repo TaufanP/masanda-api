@@ -24,11 +24,13 @@ const CreateProduct = async (
           ? await cloudinary.uploader.upload(req.file.path)
           : "";
       const imageUrl = imgUpload == null ? "" : imgUpload.secure_url;
+      const image_name = imgUpload == null ? "" : imgUpload.public_id;
       const Added = new Products({
         barcode: barcode || barcodeAlt,
         product_name,
         price,
         product_image: imageUrl,
+        image_name,
       });
       try {
         const saved = await Added.save();

@@ -6,6 +6,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   },
   () => console.log("⚡️[mongoo]: Connected to DB!")
 );

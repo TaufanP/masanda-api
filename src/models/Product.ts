@@ -5,6 +5,7 @@ export interface Product {
   product_name: string;
   price: number;
   product_image: string;
+  image_name: string;
 }
 
 const ProductSchema = new Schema({
@@ -21,6 +22,10 @@ const ProductSchema = new Schema({
     require: true,
   },
   product_image: {
+    type: String,
+    require: false,
+  },
+  image_name: {
     type: String,
     require: false,
   },

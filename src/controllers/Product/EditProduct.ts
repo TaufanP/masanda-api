@@ -5,32 +5,29 @@ import ProductsModel from "../../models/Product";
 import ResponseHelper from "../../helpers/ResponseHelper";
 import V from "../../helpers/Vocab";
 
-const DeleteProduct = async (
+const EditProduct = async (
   req: Express.Request,
   res: Express.Response,
   next: Express.NextFunction
 ) => {
-  const { barcode } = req.body;
+  const { id, barcode, product_name, price } = req.body;
   try {
-    const product = await ProductsModel.findOneAndDelete({ barcode });
+    const product = await ProductsModel.findByIdAndUpdate(id, {
+      $set: {
+        barcode,
+        product_name,
+        price,
+      },
+    });
     if (product == null) {
       return ResponseHelper(res, 200, V.getProductEmpty, null, true);
     }
-    const { result, error } = await cloudinary.uploader.destroy(
-      product.image_name
-    );
-    if (result == "ok") {
-      return ResponseHelper(res, 200, V.delProduct, product, true);
-    }
-    if (result == "not found") {
-      return ResponseHelper(res, 200, V.emptyDeleteImg, product, true);
-    }
-    if (error) throw new Error(V.failDeleteImg);
+    return ResponseHelper(res, 200, V.updateProduct, product, true);
   } catch (error) {
     return ResponseHelper(
       res,
       400,
-      V.delProductFail,
+      V.updateProductFail,
       null,
       false,
       error.message
@@ -38,4 +35,4 @@ const DeleteProduct = async (
   }
 };
 
-export default DeleteProduct;
+export default EditProduct;
