@@ -1,5 +1,5 @@
 import express = require("express");
-import { CreateProduct, Products, Product } from "../controllers";
+import { CreateProduct, Products, Product } from "../controllers/Product";
 import { AddProductValidation } from "../helpers/Validator";
 import upload = require("../config/multer");
 
