@@ -6,6 +6,7 @@ import ResponseHelper from "../../helpers/ResponseHelper";
 import V from "../../helpers/Vocab";
 import cloudinary = require("../../config/cloudinary");
 const sharp = require("sharp");
+const fs = require("fs");
 
 const CreateProduct = async (
   req: Express.Request,
@@ -30,6 +31,8 @@ const CreateProduct = async (
               `./compressed-uploads/${req.file.filename}`
             )
           : "";
+      fs.unlinkSync(req.file.path);
+      fs.unlinkSync(`./compressed-uploads/${req.file.filename}`);
       const imageUrl = imgUpload == null ? "" : imgUpload.secure_url;
       const image_name = imgUpload == null ? "" : imgUpload.public_id;
       const Added = new Products({
