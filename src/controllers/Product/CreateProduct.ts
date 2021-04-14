@@ -5,6 +5,7 @@ import Products from "../../models/Product";
 import ResponseHelper from "../../helpers/ResponseHelper";
 import V from "../../helpers/Vocab";
 import cloudinary = require("../../config/cloudinary");
+const sharp = require("sharp");
 
 const CreateProduct = async (
   req: Express.Request,
@@ -19,9 +20,15 @@ const CreateProduct = async (
       return ResponseHelper(res, 400, V.productExists, null, true);
     }
     try {
+      await sharp(req.file.path)
+        .rotate()
+        .resize(240, 400)
+        .toFile(`./compressed-uploads/${req.file.filename}`);
       const imgUpload =
         req.file !== undefined
-          ? await cloudinary.uploader.upload(req.file.path)
+          ? await cloudinary.uploader.upload(
+              `./compressed-uploads/${req.file.filename}`
+            )
           : "";
       const imageUrl = imgUpload == null ? "" : imgUpload.secure_url;
       const image_name = imgUpload == null ? "" : imgUpload.public_id;
