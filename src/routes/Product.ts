@@ -6,6 +6,7 @@ import {
   DeleteProduct,
   EditProduct,
   SearchProducts,
+  SortProducts,
 } from "../controllers/Product";
 import { AddProductValidation } from "../helpers/Validator";
 import upload = require("../config/multer");
@@ -21,8 +22,9 @@ router
   )
   .get("/", Products)
   .get("/:barcode", Product)
-  .get("/:barcode", Product)
+  .post("/delete", DeleteProduct)
   .post("/search", SearchProducts)
+  .post("/sort", SortProducts)
   .post(
     "/update",
     upload.single("product_image"),
