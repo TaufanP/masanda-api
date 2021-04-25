@@ -4,7 +4,6 @@ import EditProduct from "./EditProduct";
 import Products from "./Products";
 import Product from "./Product";
 import SearchProducts from "./SearchProducts";
-import SortProducts from "./SortProducts";
 
 export {
   CreateProduct,
@@ -13,5 +12,4 @@ export {
   DeleteProduct,
   EditProduct,
   SearchProducts,
-  SortProducts,
 };

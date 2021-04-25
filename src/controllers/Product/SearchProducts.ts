@@ -8,11 +8,21 @@ const SearchProducts = async (
   res: Express.Response,
   next: Express.NextFunction
 ) => {
-  const { keyword, field = "product_name", order = 1 } = req.body;
+  const { keyword = "", field = "", order = 1 } = req.body;
   try {
+    if (keyword == "" && field.length !== 0) {
+      const products = await ProductsModel.find().sort([[field, order]]);
+      return ResponseHelper(res, 200, V.getProducts, products, true);
+    }
+    if (field) {
+      const products = await ProductsModel.find({
+        product_name: new RegExp(keyword, "i"),
+      }).sort([[field, order]]);
+      return ResponseHelper(res, 200, V.getProducts, products, true);
+    }
     const products = await ProductsModel.find({
       product_name: new RegExp(keyword, "i"),
-    }).sort([[field, order]]);
+    });
     return ResponseHelper(res, 200, V.getProducts, products, true);
   } catch (error) {
     return ResponseHelper(
