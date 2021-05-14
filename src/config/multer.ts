@@ -7,7 +7,6 @@ export = multer({
       cb(null, "./uploads");
     },
   }),
-  // limits: { fileSize: 819200 },
   fileFilter: (req: any, file: any, cb: any) => {
     let ext = path.extname(file.originalname);
     if (ext !== ".jpg" && ext !== ".jpeg" && ext !== ".png") {
