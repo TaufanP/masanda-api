@@ -8,8 +8,29 @@ const Products = async (
   res: Express.Response,
   next: Express.NextFunction
 ) => {
+  const productQuery: any = req["query"];
+  const { keyword = "", field = "", order = 1 } = productQuery;
   try {
-    const products = await ProductsModel.find();
+    if (Object.entries(productQuery).length == 0) {
+      const products = await ProductsModel.find();
+      return ResponseHelper(res, 200, V.getProducts, products, true);
+    }
+
+    if (keyword == "" && field.length !== 0) {
+      const products = await ProductsModel.find().sort([[field, order]]);
+      return ResponseHelper(res, 200, V.getProducts, products, true);
+    }
+
+    if (field) {
+      const products = await ProductsModel.find({
+        product_name: new RegExp(keyword, "i"),
+      }).sort([[field, order]]);
+      return ResponseHelper(res, 200, V.getProducts, products, true);
+    }
+
+    const products = await ProductsModel.find({
+      product_name: new RegExp(keyword, "i"),
+    });
     return ResponseHelper(res, 200, V.getProducts, products, true);
   } catch (error) {
     return ResponseHelper(

@@ -12,7 +12,7 @@ const Product = async (
   try {
     const product = await ProductsModel.findOne({ barcode });
     if (product == null)
-      ResponseHelper(res, 200, V.getProductEmpty, null, true);
+      return ResponseHelper(res, 200, V.getProductEmpty, null, true);
     return ResponseHelper(res, 200, V.getProduct, product, true);
   } catch (error) {
     return ResponseHelper(
