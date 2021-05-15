@@ -54,6 +54,10 @@ Delete Product | DELETE | {baseUrl}/api/v1/product/{product_barcode} | Product
 Update Product | PUT | {baseUrl}/api/v1/product | Product
 Search Products | GET | {baseUrl}/api/v1/product?keyword={keyword}&field={field}&order={order} | Product
 
+Notes:
+* **keyword** is the search keyword.
+* **field** is the chosen property to be searched or filtered.
+* **order** is the ordering, 1 for ascending and -1 for descending.
 <!-- GETTING STARTED -->
 ## Getting Started <a name="getting-started"></a>
 ### Prerequisites <a name="prerequisites"></a>
