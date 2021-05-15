@@ -56,7 +56,7 @@ Search Products | GET | {baseUrl}/api/v1/product?keyword={keyword}&field={field}
 
 Notes:
 * **keyword** is the search keyword.
-* **field** is the chosen property to be searched or filtered.
+* **field** is the chosen field to be sorted.
 * **order** is the ordering, 1 for ascending and -1 for descending.
 <!-- GETTING STARTED -->
 ## Getting Started <a name="getting-started"></a>
