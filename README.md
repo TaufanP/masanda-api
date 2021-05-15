@@ -49,8 +49,8 @@ Web API | Method | URL | Description
 ------------ | ------------- | ------------- | -------------
 Create Product | POST | {baseUrl}/api/v1/product | Product
 Get Products | GET | {baseUrl}/api/v1/product | Product
-Get Product | GET | {baseUrl}/api/v1/product/{product_id} | Product
-Delete Product | DELETE | {baseUrl}/api/v1/product/{product_id} | Product
+Get Product | GET | {baseUrl}/api/v1/product/{product_barcode} | Product
+Delete Product | DELETE | {baseUrl}/api/v1/product/{product_barcode} | Product
 Update Product | PUT | {baseUrl}/api/v1/product | Product
 Search Products | GET | {baseUrl}/api/v1/product?keyword={keyword}&field={field}&order={order} | Product
 
