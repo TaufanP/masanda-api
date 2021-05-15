@@ -39,7 +39,7 @@ and immediately display the details.
 
 <!-- FEATURES -->
 ## Features <a name="features"></a>
-* **High Quality Compressed Image** images will be compressed before uploaded to Cloudinary storage.
+* **High Quality Compressed Image** images will be compressed before being uploaded to Cloudinary storage.
 * **MongoDB** Masanda use a powerful, reliable and easy to scale database.
 * **Easy Deployment** Masanda API is deployed under Heroku service.
 
