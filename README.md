@@ -45,11 +45,20 @@ and immediately display the details.
 
 <!-- API LIST -->
 ## API List <a name="api-list"></a>
-### Search and Filter
-### Add New Item
-### Search Item with Barcode
-### Add New Item with Barcode Scanned
-### Autopick Barcode
+Web API| URL | Description
+------------ | ------------- | -------------
+User Register| ${baseUrl}/api/v1/user/register | -
+User Login | ${baseUrl}/api/v1/user/login | -
+User Logout | ${baseUrl}/api/v1/user/:userID/logout | -
+User Auth | ${baseUrl}/api/v1/user/authentication | -
+User Info | ${baseUrl}/api/v1/user/:userID | -
+User Online PC List| ${baseUrl}/api/v1/user/computer/online | -
+Public PC Access | ${baseUrl}/api/v1/computer/public/access | -
+User PC List | ${baseUrl}/api/v1/user/computer | -
+Update User Account | ${baseUrl}/api/v1/user/update | -
+Update User Password | ${baseUrl}/api/v1/user/password/edit | -
+Update User PC Public status | ${baseUrl}/api/v1/user/computer/public/status/update | -
+Update User PC Public Key | ${baseUrl}/api/v1/user/computer/public/key/update | -
 
 <!-- GETTING STARTED -->
 ## Getting Started <a name="getting-started"></a>
@@ -68,8 +77,16 @@ yarn install
 ```
 Create .env file on project root
 ```
-baseUrl = YOUR_ENDPOINT_URL
+PORT=4000
+DB_CONNECTION=YOUR_MONGOOSE_CONNECTION_URI
+CLOUD_NAME=YOUR_CLOUDINARY_CLOUD_NAME
+CLOUD_API_KEY=YOUR_CLOUDINARY_API_KEY
+CLOUD_API_SECRET=YOUR_CLOUDINARY_API_SECRET
 ```
+You can get the variables in links below:
+* [mongoose URI](https://mongoosejs.com/docs/connections.html)
+* [Cloudinary](https://cloudinary.com/documentation/how_to_integrate_cloudinary)
+
 Run the server on your local
 ```
 yarn start
