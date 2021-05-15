@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TaufanP/masanda.git"
+    "url": "git+https://github.com/TaufanP/masanda-api.git"
   },
   "keywords": [
     "store"
@@ -17,9 +17,9 @@
   "author": "Taufan Prihantoro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TaufanP/masanda/issues"
+    "url": "https://github.com/TaufanP/masanda-api/issues"
   },
-  "homepage": "https://github.com/TaufanP/masanda#readme",
+  "homepage": "https://github.com/TaufanP/masanda-api#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.25.1",
