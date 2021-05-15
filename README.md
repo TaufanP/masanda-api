@@ -45,20 +45,14 @@ and immediately display the details.
 
 <!-- API LIST -->
 ## API List <a name="api-list"></a>
-Web API| URL | Description
------------- | ------------- | -------------
-User Register| ${baseUrl}/api/v1/user/register | -
-User Login | ${baseUrl}/api/v1/user/login | -
-User Logout | ${baseUrl}/api/v1/user/:userID/logout | -
-User Auth | ${baseUrl}/api/v1/user/authentication | -
-User Info | ${baseUrl}/api/v1/user/:userID | -
-User Online PC List| ${baseUrl}/api/v1/user/computer/online | -
-Public PC Access | ${baseUrl}/api/v1/computer/public/access | -
-User PC List | ${baseUrl}/api/v1/user/computer | -
-Update User Account | ${baseUrl}/api/v1/user/update | -
-Update User Password | ${baseUrl}/api/v1/user/password/edit | -
-Update User PC Public status | ${baseUrl}/api/v1/user/computer/public/status/update | -
-Update User PC Public Key | ${baseUrl}/api/v1/user/computer/public/key/update | -
+Web API | Method | URL | Description
+------------ | ------------- | ------------- | -------------
+Create Product | POST | {baseUrl}/api/v1/product | Product
+Get Products | GET | {baseUrl}/api/v1/product | Product
+Get Product | GET | {baseUrl}/api/v1/product/{product_id} | Product
+Delete Product | DELETE | {baseUrl}/api/v1/product/{product_id} | Product
+Update Product | PUT | {baseUrl}/api/v1/product | Product
+Search Products | GET | {baseUrl}/api/v1/product?keyword={keyword}&field={field}&order={order} | Product
 
 <!-- GETTING STARTED -->
 ## Getting Started <a name="getting-started"></a>
