@@ -48,9 +48,9 @@ const EditProduct = async (
     if (req.file == undefined) {
       const productUpdate = await ProductsModel.findByIdAndUpdate(id, {
         $set: {
-          barcode,
-          product_name,
-          price,
+          barcode: barcode || product.barcode,
+          product_name: product_name || product.product_name,
+          price: price || product.price,
         },
       });
       return ResponseHelper(res, 200, V.updateProduct, productUpdate, true);
@@ -59,9 +59,9 @@ const EditProduct = async (
     if (product.image_name == undefined) {
       const productUpdateNewImage = _uploadingWithImage({
         file: req.file,
-        barcode,
-        product_name,
-        price,
+        barcode: barcode || product.barcode,
+        product_name: product_name || product.product_name,
+        price: price || product.price,
         id,
       });
       return ResponseHelper(
@@ -77,14 +77,14 @@ const EditProduct = async (
       product.image_name
     );
     if (result == "ok") {
-      const product = _uploadingWithImage({
+      const newProduct = _uploadingWithImage({
         file: req.file,
-        barcode,
-        product_name,
-        price,
+        barcode: barcode || product.barcode,
+        product_name: product_name || product.product_name,
+        price: price || product.price,
         id,
       });
-      return ResponseHelper(res, 200, V.updateProduct, product, true);
+      return ResponseHelper(res, 200, V.updateProduct, newProduct, true);
     }
     if (error) throw new Error(V.failDeleteImg);
   } catch (error) {

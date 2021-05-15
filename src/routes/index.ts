@@ -1,6 +1,5 @@
 import express = require("express");
 import product = require("./Product");
-import products = require("./Products");
 
 const Router = express.Router();
 
@@ -14,6 +13,5 @@ Router.get(
 
 // Routes
 Router.use("/product", product);
-Router.use("/products", products);
 
 export = Router;

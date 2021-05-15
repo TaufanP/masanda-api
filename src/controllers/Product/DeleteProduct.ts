@@ -10,7 +10,7 @@ const DeleteProduct = async (
   res: Express.Response,
   next: Express.NextFunction
 ) => {
-  const { barcode } = req.body;
+  const { barcode } = req.params;
   try {
     const product = await ProductsModel.findOneAndDelete({ barcode });
     if (product == null) {
