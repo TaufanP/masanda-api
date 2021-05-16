@@ -20,6 +20,15 @@ const CreateProduct = async (
     if (checkProduct !== null) {
       return ResponseHelper(res, 400, V.productExists, null, true);
     }
+    if (!req.file) {
+      const Added = new Products({
+        barcode: barcode || barcodeAlt,
+        product_name,
+        price,
+      });
+      const saved = await Added.save();
+      return ResponseHelper(res, 201, V.addedProduct, saved, true);
+    }
     try {
       await sharp(req.file.path)
         .rotate()

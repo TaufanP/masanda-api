@@ -16,6 +16,9 @@ const DeleteProduct = async (
     if (product == null) {
       return ResponseHelper(res, 200, V.getProductEmpty, null, true);
     }
+    if (!product.product_image || !product.image_name) {
+      return ResponseHelper(res, 200, V.getProductEmpty, null, true);
+    }
     const { result, error } = await cloudinary.uploader.destroy(
       product.image_name
     );

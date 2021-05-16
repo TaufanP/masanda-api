@@ -23,13 +23,13 @@ const Products = async (
 
     if (field) {
       const products = await ProductsModel.find({
-        product_name: new RegExp(keyword, "i"),
+        $or: [{ product_name: new RegExp(keyword, "i") }, { barcode: keyword }],
       }).sort([[field, order]]);
       return ResponseHelper(res, 200, V.getProducts, products, true);
     }
 
     const products = await ProductsModel.find({
-      product_name: new RegExp(keyword, "i"),
+      $or: [{ product_name: new RegExp(keyword, "i") }, { barcode: keyword }],
     });
     return ResponseHelper(res, 200, V.getProducts, products, true);
   } catch (error) {
